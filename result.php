@@ -139,7 +139,7 @@ $akurasi = $totalData > 0 ? round(($jumlahBenar / $totalData) * 100) : 0;
             <!-- Banyak Data Benar -->
             <div class="col-md-4">
                 <div class="card text-white bg-primary mb-3">
-                    <div class="card-header">Banyak Data Salah</div>
+                    <div class="card-header">Banyak Data Benar</div>
                     <div class="card-body">
                         <h5 class="card-title fs-1"><?= $jumlahBenar ?></h5>
                     </div>
@@ -180,7 +180,7 @@ $akurasi = $totalData > 0 ? round(($jumlahBenar / $totalData) * 100) : 0;
                         <th>Tempat Tinggal</th>
                         <th>Gunakan HP</th>
                         <th>Gunakan Laptop</th>
-                        <th>Akses Internet</th>
+                        <th>Akses Internet (Prediksi)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -194,7 +194,7 @@ $akurasi = $totalData > 0 ? round(($jumlahBenar / $totalData) * 100) : 0;
                             <td><?= $row['Tempat Tinggal'] ?></td>
                             <td><?= $row['Gunakan HP'] ?></td>
                             <td><?= $row['Gunakan Laptop'] ?></td>
-                            <td><?= $row['Akses Internet'] ?></td>
+                            <td><?= $row['Akses Internet (Prediksi)'] ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
