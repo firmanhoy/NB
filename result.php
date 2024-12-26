@@ -122,11 +122,8 @@ $akurasi = $totalData > 0 ? round(($jumlahBenar / $totalData) * 100, 2) : 0;
         <div class="row text-center mt-5">
             <div class="col-md-4">
                 <div class="card text-white bg-primary mb-3">
-<<<<<<< HEAD
                     <div class="card-header">Banyak Data Benar</div>
-=======
                     <div class="card-header">Banyak Data BENAR</div>
->>>>>>> 0cf3f7c3a509f51bfa9da70490a9e98d2dbe4128
                     <div class="card-body">
                         <h5 class="card-title fs-1"><?= $jumlahBenar ?></h5>
                     </div>
@@ -169,7 +166,6 @@ $akurasi = $totalData > 0 ? round(($jumlahBenar / $totalData) * 100, 2) : 0;
             <tbody>
                 <?php foreach ($dataTest as $index => $row): ?>
                     <tr>
-<<<<<<< HEAD
                         <th>No</th>
                         <th>Umur</th>
                         <th>Jenis Kelamin</th>
@@ -198,7 +194,6 @@ $akurasi = $totalData > 0 ? round(($jumlahBenar / $totalData) * 100, 2) : 0;
             </table>
         <?php endif; ?>
     </div>
-=======
                         <td><?= $index + 1 ?></td>
                         <td><?= $row['Umur'] ?></td>
                         <td><?= $row['Jenis Kelamin'] ?></td>
@@ -210,7 +205,6 @@ $akurasi = $totalData > 0 ? round(($jumlahBenar / $totalData) * 100, 2) : 0;
                         <td><?= $row['Hasil Klasifikasi (Naive Bayes)'] ?></td>
                     </tr>
                 <?php endforeach; ?>
->>>>>>> 0cf3f7c3a509f51bfa9da70490a9e98d2dbe4128
 
                 <?php if ($_SERVER["REQUEST_METHOD"] == "POST"): ?>
                     <tr>
