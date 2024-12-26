@@ -2,15 +2,24 @@
 include('function.php');
 
 // Ambil data JSON untuk training
-$filePath = 'C:\\xampp_7\\htdocs\\NaiveBayes\\training.json'; 
+$filePath = 'C:\xampp_7\htdocs\NaiveBayes\training.json'; 
 $data = ambilDataJSON($filePath);
 
-// Variabel untuk menyimpan hasil
-$persebaranData = [];
-$atributPilihan = isset($_POST['atribut']) ? $_POST['atribut'] : '';
+// Atribut yang akan dihitung persebarannya
+$atributList = [
+    'Umur',
+    'Jenis Kelamin',
+    'Kelas',
+    'Tempat Tinggal',
+    'Gunakan HP',
+    'Gunakan Laptop',
+    'Akses Internet'
+];
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && $atributPilihan !== '') {
-    $persebaranData = hitungPersebaran($data, $atributPilihan);
+// Hitung persebaran untuk setiap atribut
+$hasilPersebaran = [];
+foreach ($atributList as $atribut) {
+    $hasilPersebaran[$atribut] = hitungPersebaran($data, $atribut);
 }
 ?>
 
@@ -24,29 +33,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $atributPilihan !== '') {
 </head>
 <body data-bs-theme="dark">
     <div class="container mt-5">
-        <h1 class="text-center mb-4">Rincian Persebaran Atribut</h1>
+        <h1 class="text-center mb-4">Rincian Persebaran Semua Atribut Data Training</h1>
 
-        <!-- Form untuk memilih atribut -->
-        <form method="POST" class="mb-4">
-            <div class="mb-3">
-                <label for="atribut" class="form-label">Pilih Atribut:</label>
-                <select class="form-select" id="atribut" name="atribut" required>
-                    <option value="" disabled selected>Pilih Atribut</option>
-                    <option value="Umur" <?= $atributPilihan == 'Umur' ? 'selected' : '' ?>>Umur</option>
-                    <option value="Jenis Kelamin" <?= $atributPilihan == 'Jenis Kelamin' ? 'selected' : '' ?>>Jenis Kelamin</option>
-                    <option value="Kelas" <?= $atributPilihan == 'Kelas' ? 'selected' : '' ?>>Kelas</option>
-                    <option value="Tempat Tinggal" <?= $atributPilihan == 'Tempat Tinggal' ? 'selected' : '' ?>>Tempat Tinggal</option>
-                    <option value="Gunakan HP" <?= $atributPilihan == 'Gunakan HP' ? 'selected' : '' ?>>Gunakan HP</option>
-                    <option value="Gunakan Laptop" <?= $atributPilihan == 'Gunakan Laptop' ? 'selected' : '' ?>>Gunakan Laptop</option>
-                    <option value="Akses Internet" <?= $atributPilihan == 'Akses Internet' ? 'selected' : '' ?>>Akses Internet</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Lihat Persebaran</button>
-        </form>
-
-        <?php if (!empty($persebaranData)): ?>
-            <!-- Tampilkan hasil persebaran -->
-            <h3>Persebaran untuk Atribut: <strong><?= htmlspecialchars($atributPilihan) ?></strong></h3>
+        <?php foreach ($hasilPersebaran as $atribut => $persebaranData): ?>
+            <h3>Persebaran untuk Atribut: <strong><?= htmlspecialchars($atribut) ?></strong></h3>
             <table class="table table-bordered mt-3">
                 <thead>
                     <tr>
@@ -65,9 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $atributPilihan !== '') {
                     <?php endforeach; ?>
                 </tbody>
             </table>
-        <?php elseif ($_SERVER["REQUEST_METHOD"] == "POST"): ?>
-            <div class="alert alert-warning">Tidak ada data untuk atribut yang dipilih.</div>
-        <?php endif; ?>
+        <?php endforeach; ?>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
