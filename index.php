@@ -133,6 +133,19 @@ $datas = ambilDataJSON($filePath);
                 </select>
             </div>
 
+            <!-- Dropdown untuk Prediksi User -->
+            <div class="col-12 d-flex justify-content-center mt-3">
+            <div class="col-md-6">
+                <label for="prediksi_user" class="form-label">Prediksi Anda</label>
+                <select class="form-select" id="prediksi_user" name="prediksi_user" required>
+                    <option value="Ya">Ya</option>
+                    <option value="Tidak">Tidak</option>
+                </select>
+            </div>
+            </div>
+
+
+
             <!-- Tombol Kirim -->
             <div class="col-12 text-center">
                 <button type="submit" class="btn btn-primary">Prediksi</button>
