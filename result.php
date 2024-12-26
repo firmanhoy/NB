@@ -162,7 +162,7 @@ $akurasi = $totalData > 0 ? round(($jumlahBenar / $totalData) * 100) : 0;
                 <?php if ($hasilPrediksi === "Benar"): ?>
                     <div class="alert alert-success">
                         <strong>Prediksi Anda Benar.
-                        </strong> Hasil Naive Bayes juga menunjukkan: <?= $prediksi ?>
+                        <br></strong> Hasil Naive Bayes juga menunjukkan: <?= $prediksi ?>
                     </div>
                 <?php else: ?>
                     <div class="alert alert-danger">
