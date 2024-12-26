@@ -80,6 +80,30 @@ function prediksiAksesInternet($posterior) {
     return $posterior['Ya'] > $posterior['Tidak'] ? 'Ya' : 'Tidak';
 }
 
+function hitungPersebaran($data, $atribut) {
+    $frekuensi = [];
+    $total = count($data);
 
+    // Hitung frekuensi tiap nilai dalam atribut
+    foreach ($data as $row) {
+        if (isset($row[$atribut])) {
+            $nilai = $row[$atribut];
+            if (!isset($frekuensi[$nilai])) {
+                $frekuensi[$nilai] = 0;
+            }
+            $frekuensi[$nilai]++;
+        }
+    }
+
+    // Hitung persentase
+    foreach ($frekuensi as $nilai => $count) {
+        $frekuensi[$nilai] = [
+            'count' => $count,
+            'percentage' => round(($count / $total) * 100, 2)
+        ];
+    }
+
+    return $frekuensi;
+}
 ?>
 
