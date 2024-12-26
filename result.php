@@ -176,7 +176,7 @@ $akurasi = $totalData > 0 ? round(($jumlahBenar / $totalData) * 100) : 0;
             <!-- Banyak Data Benar -->
             <div class="col-md-4">
                 <div class="card text-white bg-primary mb-3">
-                    <div class="card-header">Banyak Data Salah</div>
+                    <div class="card-header">Banyak Data Benar</div>
                     <div class="card-body">
                         <h5 class="card-title fs-1"><?= $jumlahBenar ?></h5>
                     </div>
