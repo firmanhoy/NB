@@ -135,6 +135,37 @@ $akurasi = $totalData > 0 ? round(($jumlahBenar / $totalData) * 100) : 0;
                 <?php endif; ?>
             </div>
 
+            <div class="row text-center mt-5">
+            <!-- Banyak Data Benar -->
+            <div class="col-md-4">
+                <div class="card text-white bg-primary mb-3">
+                    <div class="card-header">Banyak Data Salah</div>
+                    <div class="card-body">
+                        <h5 class="card-title fs-1"><?= $jumlahBenar ?></h5>
+                    </div>
+                </div>
+            </div>
+            <!-- Banyak Data Salah -->
+            <div class="col-md-4">
+                <div class="card text-white bg-danger mb-3">
+                    <div class="card-header">Banyak Data Salah</div>
+                    <div class="card-body">
+                        <h5 class="card-title fs-1"><?= $jumlahSalah ?></h5>
+                    </div>
+                </div>
+            </div>
+            <!-- Akurasi Naive Bayes -->
+            <div class="col-md-4">
+                <div class="card text-white bg-success mb-3">
+                    <div class="card-header">Akurasi Naive Bayes</div>
+                    <div class="card-body">
+                        <h5 class="card-title fs-1"><?= $akurasi ?>%</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
             <a href="index.php" class="btn btn-primary btn-md">Kembali</a>
 
             <!-- Tampilkan semua data training yang digunakan -->
