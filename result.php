@@ -74,7 +74,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $jumlahSalah++;
     }
-}
+
+    // cek apakah prediksi benar
+    $prediksi = ($posteriorYa > $posteriorTidak) ? "Ya" : "Tidak";
+    $hasilPrediksi = ($prediksi === $prediksiUser) ? "Benar" : "Salah";
+    }
 
 // Total Data
 $totalData = $jumlahBenar + $jumlahSalah;
@@ -155,7 +159,7 @@ $akurasi = $totalData > 0 ? round(($jumlahBenar / $totalData) * 100) : 0;
             <div class="mb-5">
                 <h4 class="text-white mb-3">Evaluasi Prediksi</h4>
 
-                <?php if ($prediksiUser === "Ya"): ?>
+                <?php if ($hasilPrediksi === "Benar"): ?>
                     <div class="alert alert-success">
                         <strong>Prediksi Anda Benar.
                         </strong> Hasil Naive Bayes juga menunjukkan: <?= $prediksi ?>
