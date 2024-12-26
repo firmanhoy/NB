@@ -1,6 +1,6 @@
 <?php
 require_once 'function.php';
-$filePath = 'C:\xampp_7\htdocs\NaiveBayes\training.json';
+$filePath = 'training.json';
 $datas = ambilDataJSON($filePath);
 ?>
 
