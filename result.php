@@ -93,6 +93,20 @@ $akurasi = $totalData > 0 ? round(($jumlahBenar / $totalData) * 100) : 0;
     <title>Prediksi Akses Internet</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+<style>
+        .table-container {
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+        }
+        .table-container thead {
+            position: sticky;
+            top: 0;
+            background-color: #343a40;
+            color: #fff;
+            z-index: 10;
+        }
+    </style>
 <body data-bs-theme="dark">
     <div class="container mt-5">
         <h1 class="text-center mb-4">Prediksi Akses Internet Berdasarkan Data Pengguna</h1>
@@ -189,7 +203,8 @@ $akurasi = $totalData > 0 ? round(($jumlahBenar / $totalData) * 100) : 0;
 
             <!-- Tampilkan semua data training yang digunakan -->
             <h5 class="mt-5">Data Testing:</h5>
-            <table class="table table-bordered">
+            <div class="table-container">
+               <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -231,9 +246,10 @@ $akurasi = $totalData > 0 ? round(($jumlahBenar / $totalData) * 100) : 0;
                         <td><?= $prediksi ?></td>
                     </tr>
                 <?php endif; ?>
-            </tbody>
-
-            </table>
+                </tbody>
+                </table> 
+            </div>
+            
         <?php endif; ?>
     </div>
 
