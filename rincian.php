@@ -2,7 +2,7 @@
 include('function.php');
 
 // Ambil data JSON untuk training
-$filePath = 'C:\xampp_7\htdocs\NaiveBayes\training.json'; 
+$filePath = 'training.json'; 
 $data = ambilDataJSON($filePath);
 
 // Atribut yang akan dihitung persebarannya
