@@ -15,6 +15,8 @@ $atributValues = [];
 $presentasiYa = 0;
 $presentasiTidak = 0;
 $i = 0;
+$jumlahBenar = 0;
+$jumlahSalah = 0;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Ambil nilai atribut dari form
@@ -24,6 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tempatTinggal = $_POST['tempat_tinggal'];
     $gunakanHP = $_POST['gunakan_hp'];
     $gunakanLaptop = $_POST['gunakan_laptop'];
+    $prediksiUser = $_POST['prediksi_user'];
 
     // Masukkan atribut tersebut dalam array untuk perhitungan posterior
     $atributValues = [
@@ -51,8 +54,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Prediksi Akses Internet berdasarkan nilai posterior
     $prediksi = $posteriorYa > $posteriorTidak ? 'Ya' : 'Tidak';
+
+    // Evaluasi prediksi user
+    if ($prediksi === $prediksiUser) {
+        $jumlahBenar++;
+    } else {
+        $jumlahSalah++;
+    }
 }
+
+$totalData = $jumlahBenar + $jumlahSalah;
+$akurasi = $totalData > 0 ? round(($jumlahBenar / $totalData) * 100) : 0;
 ?>
+
 
 <!DOCTYPE html>
 <html lang="id">
@@ -69,9 +83,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php if ($_SERVER["REQUEST_METHOD"] == "POST"): ?>
             <!-- Tampilkan hasil prediksi -->
             <div class="alert alert-info">
-                <h4>Hasil Prediksi:</h4>
+                <h4>Hasil Naive Bayes:</h4>
                 <p><strong>Akses Internet: </strong> <?= $prediksi ?></p>
             </div>
+
             <!-- Tampilkan persentase tebakan -->
             <div class="row">
                 <div class="col-md-6">
@@ -105,6 +120,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <?php endforeach; ?>
                 </tbody>
             </table>
+
+            <div class="mb-5">
+                <h4 class="text-white mb-3">Evaluasi Prediksi</h4>
+
+                <?php if ($prediksiUser === "Ya"): ?>
+                    <div class="alert alert-success">
+                        <strong>Prediksi Anda Benar.</strong> Hasil Naive Bayes juga menunjukkan: <?= $prediksi ?>
+                    </div>
+                <?php else: ?>
+                    <div class="alert alert-danger">
+                        <strong>Prediksi Anda Salah.<br></strong> Hasil Naive Bayes menunjukkan: <strong> <?= $prediksi ?> </strong>
+                    </div>
+                <?php endif; ?>
+            </div>
+
             <a href="index.php" class="btn btn-primary btn-md">Kembali</a>
 
             <!-- Tampilkan semua data training yang digunakan -->
