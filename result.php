@@ -2,8 +2,8 @@
 include('function.php');
 
 // Ambil data JSON untuk training
-$filePath = 'C:\\xampp_7\\htdocs\\NaiveBayes\\training.json'; 
-$testPath = 'C:\\xampp_7\\htdocs\\NaiveBayes\\testing.json'; 
+$filePath = 'training.json'; 
+$testPath = 'testing.json'; 
 $data = ambilDataJSON($filePath);
 $dataTest = ambilDataJSON($testPath);
 
